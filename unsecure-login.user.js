@@ -2,16 +2,16 @@
 // @name        Unsecure login check
 // @namespace   htt://taoufix.com/unsecure-login
 // @include     *
-// @version     1.2.3
+// @version     1.2.4
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
 
 this.$ = this.jQuery = jQuery.noConflict(true);
 
-var pwStyle = "input.pwOK { background-color: #ccffcc !important; background-image: none !important; }"
-    + "input.pwWarn { background-color: #ffff98 !important; background-image: none !important; }"
-    + "input.pwKO { background-color: #ffbbbb !important; background-image: none !important; }";
+var pwStyle = "input.pwOK { color: #000000 !important; background-color: #ccffcc !important; background-image: none !important; }"
+    + "input.pwWarn { color: #000000 !important; background-color: #ffff98 !important; background-image: none !important; }"
+    + "input.pwKO { color: #000000 !important; background-color: #ffffbb !important; background-image: none !important; }";
 
 
 $( "<style>" + pwStyle + "</style>" ).appendTo("head");
