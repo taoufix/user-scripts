@@ -2,7 +2,7 @@
 // @name        Unsecure login check
 // @namespace   htt://taoufix.com/unsecure-login
 // @include     *
-// @version     1.2.4
+// @version     1.2.5
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
@@ -10,9 +10,8 @@
 this.$ = this.jQuery = jQuery.noConflict(true);
 
 var pwStyle = "input.pwOK { color: #000000 !important; background-color: #ccffcc !important; background-image: none !important; }"
-    + "input.pwWarn { color: #000000 !important; background-color: #ffff98 !important; background-image: none !important; }"
-    + "input.pwKO { color: #000000 !important; background-color: #ffffbb !important; background-image: none !important; }";
-
+    + " input.pwWarn { color: #000000 !important; background-color: #ffff98 !important; background-image: none !important; }"
+    + " input.pwKO { color: #000000 !important; background-color: #ffbbbb !important; background-image: none !important; }";
 
 $( "<style>" + pwStyle + "</style>" ).appendTo("head");
 
@@ -26,14 +25,13 @@ $('input[type=password]').each(function () {
     var ok;
     var action = $(this).closest('form').attr('action');
     if (action.startsWith('https://')) {
-        // Form action is HTTPS
         ok = true;
     } else if (action.startsWith('http://')) {
-        // Form action is HTTP :(
         ok = false;
     } else if (location.protocol === 'https:') {
         // Form action is a relative path and the whole page is HTTPS
         ok = true;
+        console.log("location.protocol === 'https:'");
     } else {
         ok = false;
     }
@@ -51,5 +49,5 @@ $('input[type=password]').each(function () {
     $(this).addClass(pwClass);
     
     // Show form action on mouse hover.
-    $(this).attr('title', 'form action: ' + action);
+    $(this).attr('title', 'form action=' + action);
 });
