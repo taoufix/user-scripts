@@ -2,7 +2,7 @@
 // @name        Unsecure login check
 // @namespace   htt://taoufix.com/unsecure-login
 // @include     *
-// @version     1.2.5
+// @version     1.2.6
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
@@ -15,7 +15,7 @@ var pwStyle = "input.pwOK { color: #000000 !important; background-color: #ccffcc
 
 $( "<style>" + pwStyle + "</style>" ).appendTo("head");
 
-var getLocation = function(href) {
+function getLocation(href) {
     var l = document.createElement("a");
     l.href = href;
     return l;
