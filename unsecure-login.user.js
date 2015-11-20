@@ -2,7 +2,7 @@
 // @name        Unsecure login check
 // @namespace   htt://taoufix.com/unsecure-login
 // @include     *
-// @version     1.2.6
+// @version     1.2.7
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
@@ -28,12 +28,9 @@ $('input[type=password]').each(function () {
         ok = true;
     } else if (action.startsWith('http://')) {
         ok = false;
-    } else if (location.protocol === 'https:') {
-        // Form action is a relative path and the whole page is HTTPS
-        ok = true;
-        console.log("location.protocol === 'https:'");
     } else {
-        ok = false;
+        // Form action is a relative path and the whole page is HTTPS
+        ok = (location.protocol === 'https:');
     }
     
     var pwClass;
