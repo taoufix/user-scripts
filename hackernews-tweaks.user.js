@@ -2,7 +2,8 @@
 // @name        Hacker News Tweaks
 // @namespace   http://taoufix.com/hackernews-tweaks
 // @include     https://news.ycombinator.com/*
-// @version     2.0.2
+// @updateURL   https://github.com/taoufix/user-scripts/raw/master/hackernews-tweaks.user.js
+// @version     2.0.3
 // @grant       none
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
