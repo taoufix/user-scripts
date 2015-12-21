@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name        Unsecure login check
 // @namespace   htt://taoufix.com/unsecure-login
+// @updateURL   https://raw.githubusercontent.com/taoufix/user-scripts/master/unsecure-login.user.js
 // @include     *
-// @version     1.2.7
+// @version     1.2.8
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
 // ==/UserScript==
