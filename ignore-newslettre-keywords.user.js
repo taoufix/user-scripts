@@ -18,7 +18,7 @@
     $(".article-headline").each(function(i, v) {
         var title = v.innerText.toLowerCase();
         keywords.forEach(function(k) {
-            if (title.indexOf(k) > 0) {
+            if (title.indexOf(k) >= 0) {
                 $(v).css("color", "#ccc");
                 $(v).parent().css("color", "#ccc");
             }
