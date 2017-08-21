@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ignore newslettre keywords
 // @namespace    http://taoufix.com/
-// @version      0.1
+// @version      0.1.1
 // @description  try to take over the world!
 // @author       @taoufix
 // @include      /^https?:\/\/mailchi\.mp\/.*/
@@ -12,7 +12,7 @@
 (function() {
     'use strict';
 
-    var keywords = ["rxjava", "kotlin"];
+    var keywords = ["rxjava", "kotlin", "espresso", "tests"];
 
     // Your code here...
     $(".article-headline").each(function(i, v) {
