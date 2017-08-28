@@ -12,13 +12,13 @@
 (function() {
     'use strict';
 
-    var keywords = ["\brxjava\b", "\bkotlin\b", "\bespresso\b", "\btests\b", "\bwear\b"];
+    var keywords = [/\brxjava\b/, /\bkotlin\b/, /\bespresso\b/, /\btests\b/, /\bwear\b/];
 
     // Your code here...
     $(".article-headline").each(function(i, v) {
         var title = v.innerText.toLowerCase();
         keywords.forEach(function(k) {
-            if (title.match(k) >= 0) {
+            if (title.match(k)) {
                 $(v).css("color", "#ccc");
                 $(v).parent().css("color", "#ccc");
             }
