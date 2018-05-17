@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Mot flêchés force
-// @namespace    http://taoufix.com/20min-motfleches-afficher-force
+// @name         20min Mots flêchés afficher force
+// @namespace    http://taoufix.com/20min-motsfleches-afficher-force
 // @version      0.1
-// @updateURL    https://github.com/taoufix/user-scripts/raw/master/20min-motfleches-afficher-force.user.js
+// @updateURL    https://github.com/taoufix/user-scripts/raw/master/20min-motsfleches-afficher-force.user.js
 // @author       taoufix
 // @match        http://rcijeux.fr/game/20minutes/mfleches?id=*
 // @grant        none
