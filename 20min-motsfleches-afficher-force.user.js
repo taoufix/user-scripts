@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         20min Mots flêchés afficher force
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.0.1
+// @version      1.0.2
 // @updateURL    https://github.com/taoufix/user-scripts/raw/master/20min-motsfleches-afficher-force.user.js
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/20minutes/mfleches?id=*
@@ -15,9 +15,20 @@
 
     console.log("---- User script [20min mfleches] ----");
 
-    var DEBUG = false;
+    var DEBUG = true;
     function getDate() {
         return window.location.href.split('=')[1];
+    }
+
+    function forceStars(force) {
+        var stars = "";
+        for (var i=0; i<force; i++) {
+            stars += "★";
+        }
+        for (var j=force; j<4; j++) {
+            stars += "☆";
+        }
+        return stars;
     }
 
     $.get(window.location.origin+"/drupal_game/20minutes/grids/"+getDate()+".mfj")
@@ -26,7 +37,7 @@
         if (DEBUG) {
             console.log("force", force);
         }
-        $( "#game-name" ).html("Force: " + force);
+        $( "#game-name" ).html("Force: " + forceStars(force));
      })
      .fail(function(err) {
         console.log("---- ERROR ----");
