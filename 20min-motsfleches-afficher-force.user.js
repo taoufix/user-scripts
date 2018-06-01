@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name         20min Mots flêchés afficher force
+// @name         Mots flêchés 20minutes - afficher force
+// @description  Afficher la force d'une grille de mots flêchés 20 minutes
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.0.3
+// @version      1.0.4
 // @updateURL    https://github.com/taoufix/user-scripts/raw/master/20min-motsfleches-afficher-force.user.js
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/20minutes/mfleches?id=*
