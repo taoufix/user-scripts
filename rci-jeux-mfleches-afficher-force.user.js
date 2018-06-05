@@ -2,7 +2,7 @@
 // @name         Mots flêchés RCI Jeux - Afficher force
 // @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI.
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.1.0
+// @version      1.1.1
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/*/mfleches?id=*
 // @match        http*://www.rcijeux.fr/game/*/mfleches?id=*
@@ -16,7 +16,7 @@
 
     console.log("---- User script [mfleches] ----");
 
-    var DEBUG = true;
+    var DEBUG = false;
     var CONF = {
         "20minutes": {max: 4, mfjPath: "/grids/"},
         "lci": {max: 3, mfjPath: "/mfleches/grids/"},
