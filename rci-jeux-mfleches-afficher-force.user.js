@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Mots flêchés RCI Jeux - Afficher force
-// @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI.
+// @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI, Telestar, ...
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
 // @version      1.1.1
 // @author       taoufix
@@ -18,8 +18,7 @@
 
     var DEBUG = false;
     var CONF = {
-        "20minutes": {max: 4, mfjPath: "/grids/"},
-        "lci": {max: 3, mfjPath: "/mfleches/grids/"},
+        "20minutes": { mfjPath: "/grids/"},
     };
     function id() {
         return window.location.href.split('=')[1];
@@ -34,7 +33,7 @@
         for (var i = 0; i < force; i++) {
             s += "★";
         }
-        for (var j = force; j < CONF[source()].max; j++) {
+        for (var j = force; j < 4; j++) {
             s += "☆";
         }
         return s;
@@ -42,7 +41,8 @@
 
     function mfjUrl() {
         var src = source();
-        return window.location.origin + "/drupal_game/" + src + CONF[src].mfjPath + id() + ".mfj";
+        var path = CONF[src]? CONF[src].mfjPath : "/mfleches/grids/";
+        return window.location.origin + "/drupal_game/" + src + path + id() + ".mfj";
     }
 
     $.get(mfjUrl())
