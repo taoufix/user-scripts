@@ -2,7 +2,7 @@
 // @name         Mots flêchés RCI Jeux - Afficher force
 // @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI, Telestar, ...
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.2.1
+// @version      1.2.2
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/*/mfleches?id=*
 // @match        http*://www.rcijeux.fr/game/*/mfleches?id=*
@@ -68,17 +68,21 @@
         $("#top-def").hide();
     });
 
+    var originalHighlightNode = window.rci.Cells.Definition.prototype.highlightNode;
     window.rci.Cells.Definition.prototype.highlightNode = function() {
+        // Execute the original method
+        var result = originalHighlightNode.apply( this, arguments );
+
         var $node = $(this.getNode());
-        var classes = $node.attr('class').split(' ');
-        classes.push('cell__definition--highlight');
-        $node.attr('class', classes.join(' '));
         var txt = "";
         $node.find('tspan').each(function(i, v) {
-            txt += $(v).text() + "<br>";
+            txt += $(v).text() + " ";
         })
         $("#top-def").html(txt);
         $("#top-def").show();
+
+        // return the original result
+        return result;
     };
 
 })();
