@@ -2,7 +2,7 @@
 // @name         Mots flêchés RCI Jeux - Afficher force
 // @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI, Telestar, ...
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.1.5
+// @version      1.2.0
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/*/mfleches?id=*
 // @match        http*://www.rcijeux.fr/game/*/mfleches?id=*
@@ -13,8 +13,6 @@
 (function() {
 
     'use strict';
-
-    console.log("---- User script [mfleches] ----");
 
     var IMG_URL = "https://raw.githubusercontent.com/taoufix/user-scripts/master/permalink/mfleches/";
 
@@ -49,11 +47,33 @@
     $.get(mfjUrl())
      .done(function( data ) {
         var force = data.split("\n")[3].split('"')[1];
-        $("#game-name").html("<img style='vertical-align:middle;' src='"+IMG_URL+source()+".png'> Force : " + stars(force));
+        var src = source();
+        $("#game-name").html("<img style='vertical-align:middle;' src='"+IMG_URL+src+".png'> Force : " + stars(force));
+        $("title").html(src.toUpperCase());
      })
      .fail(function(err) {
         console.log("---- ERROR ----");
         console.log(err);
      });
+
+    // Fix padding (LCI)
+    $(".app").css("max-width", "880px");
+    $(".game").css("padding", "15px !important");
+
+    $('body').append('<div id="top-def" style=position:absolute;top:0;right:0;background-color:black;color:white;'+
+                     'font-family:sans-serif;height:110px;width:110px;font-size:18px;text-align:center;'+
+                     'display:flex;flex-direction:column;justify-content:center;align-items:center;"></div>');
+
+    window.rci.Cells.Definition.prototype.highlightNode = function() {
+        var $node = $(this.getNode());
+        var classes = $node.attr('class').split(' ');
+        classes.push('cell__definition--highlight');
+        $node.attr('class', classes.join(' '));
+        var txt = "";
+        $node.find('tspan').each(function(i, v) {
+            txt += $(v).text() + "<br>";
+        })
+        $("#top-def").html(txt);
+    };
 
 })();
