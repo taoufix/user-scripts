@@ -2,7 +2,7 @@
 // @name         Mots flêchés RCI Jeux - Afficher force
 // @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI, Telestar, ...
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
-// @version      1.3.1
+// @version      1.3.2
 // @author       taoufix
 // @match        http*://rcijeux.fr/game/*/mfleches?id=*
 // @match        http*://www.rcijeux.fr/game/*/mfleches?id=*
@@ -14,15 +14,20 @@
 
     'use strict';
 
+    function id() {
+        return window.location.href.split('=')[1];
+    }
+
+
+    // ------------------------------------------------------------------------------------------------
+    // Add force and MF source
+    // ------------------------------------------------------------------------------------------------
+
     var IMG_URL = "https://raw.githubusercontent.com/taoufix/user-scripts/master/permalink/mfleches/";
 
     var CONF = {
         "20minutes": { mfjPath: "/grids/"},
     };
-    function id() {
-        return window.location.href.split('=')[1];
-    }
-
     function source() {
         return window.location.pathname.split('/')[2];
     }
@@ -56,37 +61,50 @@
         console.log(err);
      });
 
+
+    // ------------------------------------------------------------------------------------------------
     // Fix padding (LCI)
+    // ------------------------------------------------------------------------------------------------
+
     $(".app").css("max-width", "880px");
     $(".game").css("padding", "15px !important");
 
+
+    // ------------------------------------------------------------------------------------------------
     // Add definition box
-    $('body').append('<div id="top-def" style=position:absolute;top:0;right:0;background-color:black;color:white;'+
-                     'font-family:sans-serif;height:108px;width:110px;font-size:16px;text-align:center;'+
+    // ------------------------------------------------------------------------------------------------
+
+    $('body').append('<div id="def-box" style=position:absolute;top:0;right:0;color:white;'+
+                     'font-family:sans-serif;height:106px;width:110px;font-size:16px;text-align:center;'+
                      'display:flex;flex-direction:column;justify-content:center;align-items:center;"></div>');
 
-    $("#top-def").click(function(){
-        $("#top-def").hide();
+    $("#def-box").click(function(){
+        $("#def-box").hide();
     });
     var originalHighlightNode = window.rci.Cells.Definition.prototype.highlightNode;
     window.rci.Cells.Definition.prototype.highlightNode = function() {
         // Execute the original method
         var result = originalHighlightNode.apply( this, arguments );
 
-        var $node = $(this.getNode());
-        var txt = "";
-        $node.find('tspan').each(function(i, v) {
-            txt += $(v).text() + "<br>";
-        })
-        txt.slice(0, -4); // Remove last <br>
-        $("#top-def").html(txt);
-        $("#top-def").show();
+        var def = this;
+        $("#def-box").html(def.lines.join("<br>"));
+        if (def.concours) {
+            $("#def-box").css("background-color", "RoyalBlue");
+        } else {
+            $("#def-box").css("background-color", "black");
+        }
+        $("#def-box").show();
+
 
         // return the original result
         return result;
     };
 
+
+    // ------------------------------------------------------------------------------------------------
     // Add piano button
+    // ------------------------------------------------------------------------------------------------
+
     $('body').append('<div id="piano" style=position:absolute;top:5px;left:0;'+
                    'font-size:24px;text-align:center;cursor:pointer;'+
                      'display:flex;flex-direction:column;justify-content:center;align-items:center;">🎹</div>');
@@ -103,7 +121,6 @@
             gm.inputValue(ALPHABET[i]);
         }
     });
-
 
 
 })();
