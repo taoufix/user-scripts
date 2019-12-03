@@ -1,2 +1,2 @@
 # user-scripts
-Greasemonkey User Scripts
+Tampermonkey User Scripts
