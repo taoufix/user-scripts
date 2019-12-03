@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Mots flêchés RCI Jeux - Afficher force
+// @name         Better Mots flêchés RCI Jeux
 // @description  Afficher la force d'une grille de mots flêchés 20Minutes, LCI, Telestar, ...
 // @namespace    http://taoufix.com/20min-motsfleches-afficher-force
 // @version      1.3.4
