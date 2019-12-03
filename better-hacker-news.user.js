@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Hacker News Tweaks
+// @name        Better Hacker News Tweaks
 // @namespace   http://taoufix.com/hackernews-tweaks
 // @include     https://news.ycombinator.com/news*
 // @include     https://news.ycombinator.com/best*
