@@ -1,2 +1,2 @@
 # user-scripts
-Tampermonkey User Scripts
+[Tampermonkey](https://www.tampermonkey.net/) User Scripts
