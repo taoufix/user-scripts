@@ -1,20 +1,16 @@
 // ==UserScript==
 // @name         Better MS Teams
-// @namespace    http://github.com/taoufix/better-ms-teams
-// @version      1.0.1
-// @description  Better MS Teams
+// @namespace    http://taoufix.github.io/user-scripts/better-ms-teams
+// @version      1.1.0
+// @description  Add red border to threads and green boreder to singl chats ; Disable Ctlr-Shif-C to make calls
 // @author       Taoufix
 // @match        https://teams.microsoft.com/*
+// @updateURL    https://github.com/taoufix/user-scripts/raw/master/better-ms-teams.user.js
 // @grant        GM_addStyle
 // ==/UserScript==
 
 GM_addStyle(`
 `);
-
-const SAFE_THREADS = [
-    '19:ID1@thread.tacv2', // ID1
-    '19:ID2@thread.tacv2', // ID2
-];
 
 function log(str, elm) {
     console.log('USER_SCRIPT ' + str, elm);
@@ -34,15 +30,15 @@ function log(str, elm) {
     
     // Hightlight safe and unsafe threads
     function tweak() {
-        const threadId = new URL('http://teams' + window.location.hash.substr(1)).searchParams.get('threadId');
         const div = document.getElementById('page-content-wrapper');
         div.style.border = null;
-        if (threadId) {
-            if (SAFE_THREADS.includes(threadId)) {
-                div.style.border = '2px solid green';
-            } else {
-                div.style.border = '2px solid red';
-            }
+        // Unique user chat
+        if (location.hash.includes('@unq')) {
+            div.style.border = '4px solid green';
+        }
+        // Group chat or channel
+        if (location.hash.includes('@thread')) {
+            div.style.border = '4px solid red';
         }
     }
 
