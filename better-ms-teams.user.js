@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Better MS Teams
 // @namespace    http://taoufix.github.io/user-scripts/better-ms-teams
-// @version      1.1.0
+// @version      1.1.2
 // @description  Add red border to threads and green boreder to singl chats ; Disable Ctlr-Shif-C to make calls
 // @author       Taoufix
 // @match        https://teams.microsoft.com/*
@@ -27,18 +27,20 @@ function log(str, elm) {
     }
     document.onkeydown = disabelCallShortCut;
     document.onkeyup = disabelCallShortCut
-    
+
     // Hightlight safe and unsafe threads
     function tweak() {
         const div = document.getElementById('page-content-wrapper');
         div.style.border = null;
         // Unique user chat
         if (location.hash.includes('@unq')) {
-            div.style.border = '4px solid green';
+            div.style.background = 'inherit';
+            div.style.opacity = '1';
         }
         // Group chat or channel
         if (location.hash.includes('@thread')) {
-            div.style.border = '4px solid red';
+            div.style.background = 'repeating-linear-gradient(45deg, red, red 20px, orange 20px, orange 40px)';
+            div.style.opacity = '0.15';
         }
     }
 
