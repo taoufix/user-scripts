@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SeLoger Tweaks
 // @namespace    http://github.com/taoufix
-// @version      0.1
+// @version      1.1
 // @description  Adds navigation by arrow when viewing images
 // @author       Taoufix
 // @match        https://www.seloger.com/annonces/*
@@ -24,8 +24,11 @@
           next.click();
           break;
         }
+        case 70: /* f */ {
+          document.querySelector('div[data-test="media-photo"]').click();
+          break;
+        }
       }
     }
-
 
 })();
